@@ -16,6 +16,10 @@ export const BugProvider = (props) => {
         return authFetch(`${apiURL}/bugs/${id}`).then((res) => res.json());
     };
 
+    const getBugsByCreator = (id) => {
+      return authFetch(`${apiURL}/bugs?creator=${id}`).then((res) => res.json());
+    };
+
     const deleteBug = (id) => {
         return authFetch(`${apiURL}/bugs/${id}`, {
             method: "DELETE",
@@ -33,7 +37,7 @@ export const BugProvider = (props) => {
     };
 
     const updateBug = (bug) => {
-        return authFetch(`${apiURL}/bug/${bug.id}`, {
+        return authFetch(`${apiURL}/bugs/${bug.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +49,7 @@ export const BugProvider = (props) => {
     return (
         <BugContext.Provider
           value={{
-            getAllBugs, getBugById, createBug, updateBug,
+            getAllBugs, getBugById, getBugsByCreator, createBug, updateBug,
             deleteBug, bug, setBug, searchTerms, setSearchTerms
           }}
         >
