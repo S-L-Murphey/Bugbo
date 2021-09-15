@@ -62,8 +62,8 @@ export const register = (user) => {
     });
 };
 
-// TODO update this to "rare_user_token"
-const tokenKey = "bugbo_user_id";
+// TODO update this to "bugbo_user_token"
+const tokenKey = "bugbo_user_token";
 
 const setUser = (token) => {
   localStorage.setItem(tokenKey, token);
