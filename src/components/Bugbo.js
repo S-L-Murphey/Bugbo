@@ -1,10 +1,9 @@
 import React from "react"
-import "./Bugbo.css"
+import { Route, Redirect } from "react-router-dom"
+import { ApplicationViews } from "./ApplicationViews"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
+import "./Bugbo.css";
 
-export const Bugbo = () => (
-    <>
-        <h2>Bugbo</h2>
-        <small>Bug-Tracking and Project Management App</small>
-        
-    </>
-)
+
+export const Bugbo = () => <ApplicationViews />

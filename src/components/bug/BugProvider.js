@@ -6,10 +6,11 @@ export const BugContext = createContext();
 
 export const BugProvider = (props) => {
     const [searchTerms, setSearchTerms] = useState([]);
-    const [bug, setBug] = useState(null);
+    const [bugs, setBugs] = useState([]);
 
     const getAllBugs = () => {
-        return authFetch(`${apiURL}/bugs`).then((res) => res.json());
+        return authFetch(`${apiURL}/bugs`).then((res) => res.json())
+        .then(setBugs)
     };
 
     const getBugById = (id) => {
@@ -50,7 +51,7 @@ export const BugProvider = (props) => {
         <BugContext.Provider
           value={{
             getAllBugs, getBugById, getBugsByCreator, createBug, updateBug,
-            deleteBug, bug, setBug, searchTerms, setSearchTerms
+            deleteBug, bugs, setBugs, searchTerms, setSearchTerms
           }}
         >
           {props.children}

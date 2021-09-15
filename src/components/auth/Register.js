@@ -11,6 +11,7 @@ export const Register = (props) => {
   const password = useRef();
   const verifyPassword = useRef();
   const passwordDialog = useRef();
+  const avatar = useRef();
   const history = useHistory();
 
   const handleRegister = (e) => {
@@ -83,6 +84,17 @@ export const Register = (props) => {
             name="password"
             className="form-control"
             placeholder="Password"
+            required
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="inputAvatar"> Profile Picture </label>
+          <input
+            ref={avatar}
+            type="avatar"
+            name="avatar"
+            className="form-control"
+            placeholder="Avatar"
             required
           />
         </fieldset>
