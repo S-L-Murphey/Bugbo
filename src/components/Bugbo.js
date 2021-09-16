@@ -5,5 +5,5 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import "./Bugbo.css";
 
-
 export const Bugbo = () => <ApplicationViews />
+    

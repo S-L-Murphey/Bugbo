@@ -6,6 +6,7 @@ import "./Bug.css"
 export const BugList = () => {
 
     const { bugs, getAllBugs } = useContext(BugContext);
+    const { history } = useHistory();
 
     useEffect(() => {
         getAllBugs()
@@ -36,6 +37,7 @@ export const BugList = () => {
                     )
                 })
             }
+            <Link to ={`/bugs/new`}><button>Create New Bug Ticket</button></Link>
         </section>
     )
 }

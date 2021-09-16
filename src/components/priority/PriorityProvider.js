@@ -8,13 +8,13 @@ export const PriorityProvider = (props) => {
     const [priority, setPriority] = useState([]);
 
     const getAllPriorities = () => {
-        return authFetch(`${apiURL}/priorities`)
+        return authFetch(`${apiURL}/bugpriorities`)
         .then((res) => res.json())
         .then(setPriority)
     };
 
     const createPriority = (newPriority) => {
-        return fetch(`${apiURL}/priorities`), {
+        return fetch(`${apiURL}/bugpriorities`), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -24,7 +24,7 @@ export const PriorityProvider = (props) => {
     };
 
     const updatePriority = priorityObj => {
-        return fetch(`${apiURL}/prioritiess/${priorityObj.id}`), {
+        return fetch(`${apiURL}/bugprioritiess/${priorityObj.id}`), {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export const PriorityProvider = (props) => {
     };
 
     const deletePriority = (priorityId) => {
-        return fetch(`${apiURL}/priorities/${priorityId}`), {
+        return fetch(`${apiURL}/bugpriorities/${priorityId}`), {
             method: "DELETE"
         }
         .then(getAllPriorities)

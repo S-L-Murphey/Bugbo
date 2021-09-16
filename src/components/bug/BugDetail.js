@@ -28,7 +28,8 @@ export const BugDetail = () => {
         <div className="bug__tags">Tags: { bug.tags?.map(t => {
             return <div>{t.name}</div>
         })}</div>
-
     </section>
+
+    
     )
 }

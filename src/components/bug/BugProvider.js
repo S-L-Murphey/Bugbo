@@ -7,6 +7,7 @@ export const BugContext = createContext();
 export const BugProvider = (props) => {
     const [searchTerms, setSearchTerms] = useState([]);
     const [bugs, setBugs] = useState([]);
+    const [bugTypes, setTypes] = useState([]);
 
     const getAllBugs = () => {
         return authFetch(`${apiURL}/bugs`).then((res) => res.json())
@@ -47,11 +48,23 @@ export const BugProvider = (props) => {
         });
     };
 
+    const getBugTypes = () => {
+      return fetch("http://localhost:8000/bugtypes", { 
+          headers:{
+              "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
+              "Content-Type": "application/json"
+          }
+      })
+          .then(res => res.json())
+          .then(setTypes)
+  };
+
     return (
         <BugContext.Provider
           value={{
             getAllBugs, getBugById, getBugsByCreator, createBug, updateBug,
-            deleteBug, bugs, setBugs, searchTerms, setSearchTerms
+            deleteBug, bugs, setBugs, searchTerms, setSearchTerms, bugTypes, getBugTypes,
+            setTypes
           }}
         >
           {props.children}
