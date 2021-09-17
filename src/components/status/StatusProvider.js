@@ -4,13 +4,13 @@ import { authFetch } from "../../utils/auth";
 
 export const StatusContext = createContext();
 
-export const TagProvider = (props) => {
-    const [status, setStatus] = useState([]);
+export const StatusProvider = (props) => {
+    const [statuses, setStatuses] = useState([]);
 
     const getAllStatuses = () => {
         return authFetch(`${apiURL}/statuses`)
         .then((res) => res.json())
-        .then(setStatus)
+        .then(setStatuses)
     };
 
     const createStatus = (newStatus) => {
@@ -44,8 +44,8 @@ export const TagProvider = (props) => {
     return (
         <StatusContext.Provider value=
         {{
-            status, getAllStatuses, createStatus,
-            updateStatus, deleteStatus, setStatus
+            statuses, getAllStatuses, createStatus,
+            updateStatus, deleteStatus, setStatuses
         }}>
         {props.children}
     </StatusContext.Provider>
