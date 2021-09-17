@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { BugContext } from "./BugProvider"
 import "./Bug.css"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useHistory } from "react-router-dom"
 
 export const BugDetail = () => {
-    const { getBugById } = useContext(BugContext)
+    const { getBugById, deleteBug } = useContext(BugContext)
     const [ bug, setBug ] = useState({})
     const { bugId } = useParams();
+    const history = useHistory();
 
 
     useEffect(() => {
@@ -29,6 +30,10 @@ export const BugDetail = () => {
             return <div>{t.name}</div>
         })}</div>
         <Link to ={`/bugs/${bugId}/edit`}><button>Edit Bug</button></Link>
+
+        <button onClick={() => deleteBug(bugId).then(() => {
+            history.push("/bugs")})
+        }>Delete Bug</button>
     </section>
 
     
