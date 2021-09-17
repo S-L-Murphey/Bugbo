@@ -59,7 +59,8 @@ export const BugForm = () => {
                     status: bug.status.id,
                     priority: bug.priority.id,
                     type: bug.type.id,
-                    tags: bug.tags
+                    tags: bug.tags,
+                    owner: bug.owner
                 })
             })
         }
@@ -220,8 +221,9 @@ export const BugForm = () => {
                                 entry_date: currentBug.entry_date,
                                 type: parseInt(currentBug.type),
                                 tags: bugTags,
-                                priority: currentBug.priority,
-                                status: currentBug.status
+                                priority: parseInt(currentBug.priority),
+                                status: parseInt(currentBug.status),
+                                owner: parseInt(currentBug.owner)
 
                             }
 
@@ -243,7 +245,8 @@ export const BugForm = () => {
                                 entry_date: currentBug.entry_date,
                                 type: parseInt(currentBug.type),
                                 tags: bugTags,
-                                priority: parseInt(currentBug.priority)
+                                priority: parseInt(currentBug.priority),
+                                owner: parseInt(currentBug.owner)
                             }
 
                             // Send POST request to your API
