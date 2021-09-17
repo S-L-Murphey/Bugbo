@@ -5,10 +5,11 @@ import { authFetch } from "../../utils/auth";
 export const ProjectContext = createContext();
 
 export const ProjectProvider = (props) => {
-    const [project, setProject] = useState([]);
+    const [projects, setProjects] = useState([]);
 
     const getAllProjects = () => {
-        return authFetch(`${apiURL}/projects`).then((res) => res.json());
+        return authFetch(`${apiURL}/projects`).then((res) => res.json())
+        .then(setProjects)
     };
 
     const getProjectById = (id) => {
@@ -32,7 +33,7 @@ export const ProjectProvider = (props) => {
     };
 
     const updateProject = (project) => {
-        return authFetch(`${apiURL}/project/${project.id}`, {
+        return authFetch(`${apiURL}/projects/${project.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -44,8 +45,8 @@ export const ProjectProvider = (props) => {
     return (
         <ProjectContext.Provider
           value={{
-            project, getAllProjects, getProjectById, createProject, 
-            updateProject, deleteProject, setProject
+            projects, getAllProjects, getProjectById, createProject, 
+            updateProject, deleteProject, setProjects
           }}
         >
           {props.children}

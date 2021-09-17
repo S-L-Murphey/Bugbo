@@ -8,13 +8,13 @@ export const StatusProvider = (props) => {
     const [statuses, setStatuses] = useState([]);
 
     const getAllStatuses = () => {
-        return authFetch(`${apiURL}/statuses`)
+        return authFetch(`${apiURL}/bugstatuses`)
         .then((res) => res.json())
         .then(setStatuses)
     };
 
     const createStatus = (newStatus) => {
-        return fetch(`${apiURL}/statuses`), {
+        return fetch(`${apiURL}/bugstatuses`), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -24,7 +24,7 @@ export const StatusProvider = (props) => {
     };
 
     const updateStatus = statusObj => {
-        return fetch(`${apiURL}/statuses/${statusObj.id}`), {
+        return fetch(`${apiURL}/bugstatuses/${statusObj.id}`), {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export const StatusProvider = (props) => {
     };
 
     const deleteStatus = (statusId) => {
-        return fetch(`${apiURL}/statuses/${statusId}`), {
+        return fetch(`${apiURL}/bugstatuses/${statusId}`), {
             method: "DELETE"
         }
         .then(getAllStatuses)
