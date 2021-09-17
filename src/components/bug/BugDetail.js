@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { BugContext } from "./BugProvider"
 import "./Bug.css"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 export const BugDetail = () => {
     const { getBugById } = useContext(BugContext)
@@ -28,6 +28,7 @@ export const BugDetail = () => {
         <div className="bug__tags">Tags: { bug.tags?.map(t => {
             return <div>{t.name}</div>
         })}</div>
+        <Link to ={`/bugs/${bugId}/edit`}><button>Edit Bug</button></Link>
     </section>
 
     

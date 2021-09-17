@@ -14,10 +14,6 @@ export const BugForm = () => {
     const { priority, getAllPriorities } = useContext(PriorityContext);
     const [bugTags, setBugTags] = useState([]);
 
-
-    
-
-
     const [currentBug, setCurrentBug] = useState({
         title: "",
         description: "",
