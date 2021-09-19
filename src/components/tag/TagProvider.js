@@ -13,31 +13,42 @@ export const TagProvider = (props) => {
         .then(setTags)
     };
 
+    const getTagById = (id) => {
+        return authFetch(`${apiURL}/tags/${id}`).then((res) => res.json());
+    };
+
     const createTag = (newTag) => {
-        return fetch(`${apiURL}/tags`), {
+        return fetch(`${apiURL}/tags`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
             },
             body: JSON.stringify(newTag)
-        };
+        })
+            .then(getAllTags)
     };
 
     const updateTag = tagObj => {
-        return fetch(`${apiURL}/tags/${tagObj.id}`), {
+        return fetch(`${apiURL}/tags/${tagObj.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
             },
             body: JSON.stringify(tagObj)
-        }
-        .then(getAllTags)
+        })
+            .then(getAllTags)
     };
 
     const deleteTag = (tagId) => {
-        return fetch(`${apiURL}/tags/${tagId}`), {
-            method: "DELETE"
-        }
+        return fetch(`${apiURL}/tags/${tagId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
+            },
+        })
         .then(getAllTags)
     };
 
@@ -45,7 +56,7 @@ export const TagProvider = (props) => {
         <TagContext.Provider value=
         {{
             tags, getAllTags, createTag,
-            updateTag, deleteTag, setTags
+            updateTag, deleteTag, setTags, getTagById
         }}>
         {props.children}
     </TagContext.Provider>
