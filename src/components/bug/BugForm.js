@@ -50,7 +50,7 @@ export const BugForm = () => {
 
     useEffect(() => {
         if (bugId) {
-            getBugById(bugId).then(bug => {
+            getBugById(parseInt(bugId)).then(bug => {
                 setCurrentBug({
                     title: bug.title,
                     description: bug.description,
@@ -65,6 +65,8 @@ export const BugForm = () => {
             })
         }
     }, [bugId])
+
+    console.log(currentBug)
 
     const handleTagInputChange = (event) => {
         const newBugTags = currentBug.tags
@@ -129,11 +131,11 @@ export const BugForm = () => {
                 <div className="form-group">
                     <label htmlFor="type">Bug Type: </label>
                     <select type="select" name="type" required autoFocus className="form-control"
-                        value={currentBug.type}
+                        value={currentBug.type?.id}
                         onChange={changeBugState}>
                         <option value="0">Select Bug Type</option>
                         {bugTypes.map((element => {
-                            return <option value={element.id}>
+                            return <option key={element.id} value={element.id}>
                                 {element.label}
                             </option>
                         }))}
@@ -214,8 +216,8 @@ export const BugForm = () => {
                             evt.preventDefault()
 
                             const bug = {
-                                id: bugId,
-                                creator: currentBug.creator,
+                                id: parseInt(bugId),
+                                creator: parseInt(currentBug.creator.id),
                                 title: currentBug.title,
                                 description: currentBug.description,
                                 entry_date: currentBug.entry_date,
@@ -224,7 +226,6 @@ export const BugForm = () => {
                                 priority: parseInt(currentBug.priority),
                                 status: parseInt(currentBug.status),
                                 owner: parseInt(currentBug.owner)
-
                             }
 
                             // Send PUT request to your API
@@ -243,10 +244,10 @@ export const BugForm = () => {
                                 title: currentBug.title,
                                 description: currentBug.description,
                                 entry_date: currentBug.entry_date,
-                                type: parseInt(currentBug.type),
+                                type: currentBug.type,
                                 tags: bugTags,
                                 priority: parseInt(currentBug.priority),
-                                owner: parseInt(currentBug.owner)
+
                             }
 
                             // Send POST request to your API
