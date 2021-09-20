@@ -13,31 +13,41 @@ export const StatusProvider = (props) => {
         .then(setStatuses)
     };
 
+    const getStatusById = (id) => {
+        return authFetch(`${apiURL}/bugstatuses/${id}`).then((res) => res.json());
+    };
+
     const createStatus = (newStatus) => {
-        return fetch(`${apiURL}/bugstatuses`), {
+        return fetch(`${apiURL}/bugstatuses`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
             },
             body: JSON.stringify(newStatus)
-        };
+        });
     };
 
     const updateStatus = statusObj => {
-        return fetch(`${apiURL}/bugstatuses/${statusObj.id}`), {
+        return fetch(`${apiURL}/bugstatuses/${statusObj.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
             },
             body: JSON.stringify(statusObj)
-        }
+        })
         .then(getAllStatuses)
     };
 
     const deleteStatus = (statusId) => {
-        return fetch(`${apiURL}/bugstatuses/${statusId}`), {
-            method: "DELETE"
-        }
+        return fetch(`${apiURL}/bugstatuses/${statusId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
+            },
+        })
         .then(getAllStatuses)
     };
 
@@ -45,7 +55,7 @@ export const StatusProvider = (props) => {
         <StatusContext.Provider value=
         {{
             statuses, getAllStatuses, createStatus,
-            updateStatus, deleteStatus, setStatuses
+            updateStatus, deleteStatus, setStatuses, getStatusById
         }}>
         {props.children}
     </StatusContext.Provider>
