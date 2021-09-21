@@ -6,7 +6,7 @@ export const ProfileProvider = (props) => {
     const [profile, setProfile] = useState({events:[]})
 
     const getProfile = () => {
-        return fetch("http://localhost:8000/employees", {
+        return fetch("http://localhost:8000/profile", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`
             }
