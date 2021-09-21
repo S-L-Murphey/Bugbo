@@ -1,18 +1,18 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { register } from "../../utils/auth";
 import "./Auth.css";
 
 export const Register = (props) => {
-  const firstName = useRef();
-  const lastName = useRef();
-  const email = useRef();
-  const bio = useRef();
-  const password = useRef();
-  const verifyPassword = useRef();
-  const passwordDialog = useRef();
-  const avatar = useRef();
-  const history = useHistory();
+  const firstName = React.createRef();
+  const lastName = React.createRef();
+  const email = React.createRef();
+  const bio = React.createRef();
+  const password = React.createRef();
+  const verifyPassword = React.createRef();
+  const passwordDialog = React.createRef();
+  const avatar = React.createRef();
+
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export const Register = (props) => {
 
       return register(newUser).then((success) => {
         if (success) {
-          history.push("/");
+          props.history.push("/");
         } else {
           window.alert("User already exists or could not be created.");
         }

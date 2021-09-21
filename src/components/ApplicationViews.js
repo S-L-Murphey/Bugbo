@@ -22,6 +22,7 @@ import { ProjectList } from "./project/ProjectList";
 import { ProjectDetail } from "./project/ProjectDetail";
 import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { ProjectForm } from "./project/ProjectForm.js";
+import { ProfileProvider } from "./auth/AuthProvider";
 
 export const ApplicationViews = () => {
     return (
@@ -32,86 +33,87 @@ export const ApplicationViews = () => {
                         <StatusProvider>
                             <PriorityProvider>
                                 <TypeProvider>
-                                    <Route exact path="/bugs">
-                                        <BugList />
-                                    </Route>
+                                    <ProfileProvider>
+                                        <Route exact path="/bugs">
+                                            <BugList />
+                                        </Route>
 
-                                    <Route exact path="/bugs/:bugId(\d+)">
-                                        <BugDetail />
-                                    </Route>
+                                        <Route exact path="/bugs/:bugId(\d+)">
+                                            <BugDetail />
+                                        </Route>
 
-                                    <Route exact path="/bugs/:bugId(\d+)/edit">
-                                        <BugForm />
-                                    </Route>
+                                        <Route exact path="/bugs/:bugId(\d+)/edit">
+                                            <BugForm />
+                                        </Route>
 
-                                    <Route exact path="/bugs/new">
-                                        <BugForm />
-                                    </Route>
+                                        <Route exact path="/bugs/new">
+                                            <BugForm />
+                                        </Route>
 
-                                    <Route exact path="/projects">
-                                        <ProjectList />
-                                    </Route>
+                                        <Route exact path="/projects">
+                                            <ProjectList />
+                                        </Route>
 
-                                    <Route exact path="/projects/:projectId(\d+)">
-                                        <ProjectDetail />
-                                    </Route>
+                                        <Route exact path="/projects/:projectId(\d+)">
+                                            <ProjectDetail />
+                                        </Route>
 
-                                    <Route exact path="/projects/new">
-                                        <ProjectForm />
-                                    </Route>
+                                        <Route exact path="/projects/new">
+                                            <ProjectForm />
+                                        </Route>
 
-                                    <Route exact path="/projects/:projectId(\d+)/edit">
-                                        <ProjectForm />
-                                    </Route>
+                                        <Route exact path="/projects/:projectId(\d+)/edit">
+                                            <ProjectForm />
+                                        </Route>
 
-                                    <Route exact path="/admin">
-                                        <TagList />
-                                    </Route>
+                                        <Route exact path="/admin">
+                                            <TagList />
+                                        </Route>
 
-                                    <Route exact path="/tags/:tagId(\d+)">
-                                        <TagDetail />
-                                    </Route>
+                                        <Route exact path="/tags/:tagId(\d+)">
+                                            <TagDetail />
+                                        </Route>
 
-                                    <Route exact path="/tags/new">
-                                        <TagForm />
-                                    </Route>
+                                        <Route exact path="/tags/new">
+                                            <TagForm />
+                                        </Route>
 
-                                    <Route exact path="/tags/:tagId(\d+)/edit">
-                                        <TagForm />
-                                    </Route>
+                                        <Route exact path="/tags/:tagId(\d+)/edit">
+                                            <TagForm />
+                                        </Route>
 
-                                    <Route exact path="/admin">
-                                        <StatusList />
-                                    </Route>
+                                        <Route exact path="/admin">
+                                            <StatusList />
+                                        </Route>
 
-                                    <Route exact path="/statuses/:statusId(\d+)">
-                                        <StatusDetail />
-                                    </Route>
+                                        <Route exact path="/statuses/:statusId(\d+)">
+                                            <StatusDetail />
+                                        </Route>
 
-                                    <Route exact path="/statuses/:statusId(\d+)/edit">
-                                        <StatusForm />
-                                    </Route>
+                                        <Route exact path="/statuses/:statusId(\d+)/edit">
+                                            <StatusForm />
+                                        </Route>
 
-                                    <Route exact path="/statuses/new">
-                                        <StatusForm />
-                                    </Route>
+                                        <Route exact path="/statuses/new">
+                                            <StatusForm />
+                                        </Route>
 
-                                    <Route exact path="/admin">
-                                        <TypeList />
-                                    </Route>
+                                        <Route exact path="/admin">
+                                            <TypeList />
+                                        </Route>
 
-                                    <Route exact path="/types/:typeId(\d+)">
-                                        <TypeDetail />
-                                    </Route>
+                                        <Route exact path="/types/:typeId(\d+)">
+                                            <TypeDetail />
+                                        </Route>
 
-                                    <Route exact path="/types/:typeId(\d+)/edit">
-                                        <TypeForm />
-                                    </Route>
+                                        <Route exact path="/types/:typeId(\d+)/edit">
+                                            <TypeForm />
+                                        </Route>
 
-                                    <Route exact path="/types/new">
-                                        <TypeForm />
-                                    </Route>
-
+                                        <Route exact path="/types/new">
+                                            <TypeForm />
+                                        </Route>
+                                    </ProfileProvider>
                                 </TypeProvider>
                             </PriorityProvider>
                         </StatusProvider>

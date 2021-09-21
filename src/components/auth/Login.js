@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./Auth.css"
 
 
@@ -7,7 +7,6 @@ export const Login = props => {
     const email = React.createRef();
     const password = React.createRef();
     const invalidDialog = React.createRef();
-    const history = useHistory();
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -27,7 +26,7 @@ export const Login = props => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "bugbo_user_token", res.token )
-                    history.push("/")
+                    props.history.push("/")
                 }
                 else {
                     invalidDialog.current.showModal()
@@ -38,7 +37,7 @@ export const Login = props => {
     return (
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
-                <div>Email or password was not valid.</div>
+                <div>Username or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <section>
@@ -46,8 +45,8 @@ export const Login = props => {
                     <h1>Bugbo</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={email} type="text" id="email" className="form-control"  placeholder="Email address" required autoFocus />
+                        <label htmlFor="inputEmail"> Username </label>
+                        <input ref={email} type="text" id="email" className="form-control"  placeholder="Username" required autoFocus />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputPassword"> Password </label>

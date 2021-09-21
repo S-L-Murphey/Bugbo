@@ -47,6 +47,9 @@ fieldset {
 }
 
 .form--login {
+    background-size: cover;
+    background-position-x: center;
+    background-image: url('./bug.png');
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
