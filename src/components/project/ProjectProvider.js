@@ -33,10 +33,11 @@ export const ProjectProvider = (props) => {
     };
 
     const updateProject = (project) => {
-        return authFetch(`${apiURL}/projects/${project.id}`, {
+        return fetch(`${apiURL}/projects/${project.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
           },
           body: JSON.stringify(project),
         });

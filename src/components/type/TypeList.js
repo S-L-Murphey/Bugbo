@@ -12,7 +12,7 @@ export const TypeList = () => {
     }, []);
 
     return (
-        <section className="types">
+        <section className="Types">
             {
                 types.map(t => {
                     return (<section key={`type--${t.id}`} className="type">

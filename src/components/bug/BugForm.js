@@ -66,21 +66,17 @@ export const BugForm = () => {
         }
     }, [bugId])
 
-    console.log(currentBug)
-
     const handleTagInputChange = (event) => {
-        const newBugTags = currentBug.tags
-        const foundBugTag = newBugTags.find(pt => pt.id === parseInt(event.target.id))
+        const newBugTags = {...currentBug}
+        const foundBugTag = newBugTags.tags.find(pt => pt.id === parseInt(event.target.id))
         if (foundBugTag) {
-            const foundBugTagPosition = newBugTags.indexOf(foundBugTag)
-            newBugTags.splice(foundBugTagPosition, 1)
+            const foundBugTagPosition = newBugTags.tags.indexOf(foundBugTag)
+            newBugTags.tags.splice(foundBugTagPosition, 1)
         } else {
-            newBugTags.push({ id: parseInt(event.target.id) })
+            newBugTags.tags.push(parseInt(event.target.id))
         }
-        setBugTags(newBugTags)
+        setCurrentBug(newBugTags)
     }
-
-    console.log(bugTags)
 
     const changeBugState = (event) => {
         const newBugState = { ...currentBug }
@@ -145,13 +141,13 @@ export const BugForm = () => {
             </fieldset>
 
             <fieldset>
-                <div className="form-group tags">
+                <div className="form-group Tags">
                     <h4>Tags</h4>
                     {tags.map(t => {
                         return (
                             <>
                                 <input type="checkbox" id={t.id} required autoFocus value={t.name} onChange={handleTagInputChange}
-                                    checked={bugTags.find(pt => pt.id === t.id)} />
+                                    checked={currentBug.tags.find(pt => pt.id === t.id)} />
                                 <label htmlFor={t.id}>{t.name}</label>
                             </>
                         )
@@ -217,7 +213,6 @@ export const BugForm = () => {
 
                             const bug = {
                                 id: parseInt(bugId),
-                                creator: parseInt(currentBug.creator.id),
                                 title: currentBug.title,
                                 description: currentBug.description,
                                 entry_date: currentBug.entry_date,
@@ -240,14 +235,13 @@ export const BugForm = () => {
                             evt.preventDefault()
 
                             const bug = {
-                                creator: currentBug.creator,
                                 title: currentBug.title,
                                 description: currentBug.description,
                                 entry_date: currentBug.entry_date,
-                                type: currentBug.type,
+                                type: parseInt(currentBug.type),
                                 tags: bugTags,
                                 priority: parseInt(currentBug.priority),
-
+                                creator: currentBug.creator
                             }
 
                             // Send POST request to your API

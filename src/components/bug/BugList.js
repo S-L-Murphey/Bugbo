@@ -15,7 +15,7 @@ export const BugList = () => {
     console.log(bugs)
 
     return (
-        <section className="bugs">
+        <section className="Bugs">
             {
                 bugs.map(b => {
                     return (<section key={`bug--${b.id}`} className="bug">

@@ -22,7 +22,7 @@ export const ProjectForm = () => {
     })
 
     useEffect(() => {
-        getAllEmployees().then(employees => setEmployees(employees))
+        getAllEmployees()
     }, [])
 
     useEffect(() => {
@@ -43,32 +43,36 @@ export const ProjectForm = () => {
     }, [projectId])
 
     const handleAssigneeInputChange = (event) => {
-        const newProjectAssignees = currentProject.assignees
-        const foundAssignee = newProjectAssignees.find(pt => pt.id === parseInt(event.target.id))
+        //make copy of currentProject Object
+        const newProjectAssignees = {...currentProject}
+        //return the first element in the assignees array that equals click event
+        const foundAssignee = newProjectAssignees.assignees.find(pt => pt === parseInt(event.target.id))
+        //if the array includes what was clicked on...
         if (foundAssignee) {
-            const foundAssigneePosition = newProjectAssignees.indexOf(foundAssignee)
-            newProjectAssignees.splice(foundAssigneePosition, 1)
+            //return the index number of the first appearance of the event target id
+            const foundAssigneePosition = newProjectAssignees.assignees.indexOf(foundAssignee)
+            //starting from that index, delete it
+            newProjectAssignees.assignees.splice(foundAssigneePosition, 1)
         } else {
-            newProjectAssignees.push({ id: parseInt(event.target.id)})
+            newProjectAssignees.assignees.push(parseInt(event.target.id))
         }
-        setProjectAssignees(newProjectAssignees)
+        setCurrentProject(newProjectAssignees)
     }
 
-    console.log(projectAssignees)
 
     const handleBugInputChange = (event) => {
-        const newProjectBugs = currentProject.bugs
-        const foundBug = newProjectBugs.find(pt => pt.id === parseInt(event.target.id))
+        const newProjectBugs = {...currentProject}
+        const foundBug = newProjectBugs.bugs.find(pt => pt === parseInt(event.target.id))
         if (foundBug) {
-            const foundBugPosition = newProjectBugs.indexOf(foundBug)
-            newProjectBugs.splice(foundBugPosition, 1)
+            const foundBugPosition = newProjectBugs.bugs.indexOf(foundBug)
+            newProjectBugs.bugs.splice(foundBugPosition, 1)
         } else {
-            newProjectBugs.push({ id: parseInt(event.target.id)})
+            newProjectBugs.bugs.push(parseInt(event.target.id))
         }
-        setProjectBugs(newProjectBugs)
+        setCurrentProject(newProjectBugs)
     }
 
-    console.log(projectBugs)
+
 
     const changeProjectState = (event) => {
         const newProjectState = {...currentProject }
@@ -105,7 +109,7 @@ export const ProjectForm = () => {
                             return (
                                 <>
                                     <input type="checkbox" id={e.id} required autoFocus value={e.user.username} onChange={handleAssigneeInputChange}
-                                        checked={projectAssignees.find(pa => pa.id === e.id)} />
+                                        checked={currentProject.assignees.find(pa => pa.id === e.id)} />
                                     <label htmlFor={e.id}>{e.user.username}</label>
                                 </>
                             )
@@ -121,7 +125,7 @@ export const ProjectForm = () => {
                             return (
                                 <>
                                     <input type="checkbox" id={b.id} required autoFocus value={b.title} onChange={handleBugInputChange}
-                                        checked={projectBugs.find(pb => pb.id === b.id)} />
+                                        checked={currentProject.bugs.find(pb => pb.id === b.id)} />
                                     <label htmlFor={b.id}>{b.title}</label>
                                 </>
                             )
@@ -139,11 +143,11 @@ export const ProjectForm = () => {
                             evt.preventDefault()
 
                             const project = {
-                                id: projectId,
+                                id: parseInt(projectId),
                                 name: currentProject.name,
                                 description: currentProject.description,
-                                assignees: projectAssignees,
-                                bugs: projectBugs
+                                assignees: currentProject.assignees,
+                                bugs: currentProject.bugs
                             }
 
                             // Send PUT request to your API
@@ -160,8 +164,8 @@ export const ProjectForm = () => {
                             const project = {
                                 name: currentProject.name,
                                 description: currentProject.description,
-                                assignees: projectAssignees,
-                                bugs: projectBugs
+                                assignees: currentProject.assignees,
+                                bugs: currentProject.bugs
                             }
 
                             // Send POST request to your API

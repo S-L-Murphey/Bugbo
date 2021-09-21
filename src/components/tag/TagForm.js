@@ -58,7 +58,7 @@ export const TagForm = () => {
 
                             // Send PUT request to your API
                             updateTag(tag)
-                                .then(() => history.push("/tags"))
+                                .then(() => history.push("/admin"))
                         }}
                         className="btn btn-primary">Edit Tag</button>
                     :
@@ -73,7 +73,7 @@ export const TagForm = () => {
 
                             // Send POST request to your API
                             createTag(tag)
-                                .then(() => history.push("/tags"))
+                                .then(() => history.push("/admin"))
                         }}
                         className="btn btn-primary">Create Tag</button>
             }

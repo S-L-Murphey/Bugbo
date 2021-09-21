@@ -22,7 +22,7 @@ export const StatusDetail = () => {
             <Link to ={`/statuses/${statusId}/edit`}><button>Edit Status</button></Link>
 
             <button onClick={() => deleteStatus(statusId).then(() => {
-                history.push("/statuses")})
+                history.push("/admin")})
             }>Delete Status</button>
         </section>
     

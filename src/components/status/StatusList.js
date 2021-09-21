@@ -12,7 +12,7 @@ export const StatusList = () => {
     }, []);
 
     return (
-        <section className="statuses">
+        <section className="Statuses">
             {
                 statuses.map(s => {
                     return (<section key={`statuses--${s.id}`} className="status">
