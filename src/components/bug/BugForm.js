@@ -59,7 +59,7 @@ export const BugForm = () => {
                     status: bug.status.id,
                     priority: bug.priority.id,
                     type: bug.type.id,
-                    tags: bug.tags,
+                    tags: bug.tags.map(t => t.id),
                     owner: bug.owner
                 })
             })
@@ -68,7 +68,7 @@ export const BugForm = () => {
 
     const handleTagInputChange = (event) => {
         const newBugTags = {...currentBug}
-        const foundBugTag = newBugTags.tags.find(pt => pt.id === parseInt(event.target.id))
+        const foundBugTag = newBugTags.tags.find(pt => pt === parseInt(event.target.id))
         if (foundBugTag) {
             const foundBugTagPosition = newBugTags.tags.indexOf(foundBugTag)
             newBugTags.tags.splice(foundBugTagPosition, 1)
@@ -86,7 +86,8 @@ export const BugForm = () => {
 
     return (
         <form className="bugForm">
-            <h2 className="bugForm__name">Create New Bug</h2>
+            {(bugId) ? 
+            <h2 className="bugForm__name">Edit Bug</h2> : <h2 className="bugForm__name">Create New Bug</h2>}
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="title">Title: </label>
@@ -147,7 +148,7 @@ export const BugForm = () => {
                         return (
                             <>
                                 <input type="checkbox" id={t.id} required autoFocus value={t.name} onChange={handleTagInputChange}
-                                    checked={currentBug.tags.find(pt => pt.id === t.id)} />
+                                    checked={currentBug.tags.find(pt => pt === t.id)} />
                                 <label htmlFor={t.id}>{t.name}</label>
                             </>
                         )
@@ -217,7 +218,7 @@ export const BugForm = () => {
                                 description: currentBug.description,
                                 entry_date: currentBug.entry_date,
                                 type: parseInt(currentBug.type),
-                                tags: bugTags,
+                                tags: currentBug.tags,
                                 priority: parseInt(currentBug.priority),
                                 status: parseInt(currentBug.status),
                                 owner: parseInt(currentBug.owner)
@@ -239,7 +240,7 @@ export const BugForm = () => {
                                 description: currentBug.description,
                                 entry_date: currentBug.entry_date,
                                 type: parseInt(currentBug.type),
-                                tags: bugTags,
+                                tags: currentBug.tags,
                                 priority: parseInt(currentBug.priority),
                                 creator: currentBug.creator
                             }

@@ -32,3 +32,12 @@ strong {
 address {
   margin: 0 0 1.5em;
 }
+
+.title {
+  text-align: center;
+  font-size: 3rem;
+  color: #FA921C;
+  background-color: #00008b;
+  font-weight: bold;
+  margin: 0;
+}

@@ -15,30 +15,33 @@ export const BugList = () => {
     console.log(bugs)
 
     return (
-        <section className="Bugs">
-            {
-                bugs.map(b => {
-                    return (<section key={`bug--${b.id}`} className="bug">
-                        <Link to={`/bugs/${b.id}`}>
+        <section className="create__bug">
+            <section className="bugs">
+                {
+                    bugs.map(b => {
+                        return (<section key={`bug--${b.id}`} className="bug">
                             <div className="bug__list">
-                                <div className="bug__title">
-                                    {b.title}
-                                </div>
+                                <Link to={`/bugs/${b.id}`}>
+                                    <h2 className="bug__title">
+                                        {b.title}
+                                    </h2></Link>
 
                                 <div className="bug__status">
-                                    Bug Status: {b.status.name}
+                                    <h4>Bug Status:</h4> {b.status.name}
                                 </div>
                                 <div className="bug__creator">
-                                    Added By: {b.creator.user.username}
+                                    <h4>Added By:</h4> {b.creator.user.username}
                                 </div>
                             </div>
-                        </Link>
-                    </section>
-                    )
-                })
-            }
-            <Link to ={`/bugs/new`}><button>Create New Bug Ticket</button></Link>
+
+                        </section>
+                        )
+                    })
+                }
+            </section>
+            <Link to={`/bugs/new`}><button>Create New Bug Ticket</button></Link>
         </section>
     )
+
 }
 

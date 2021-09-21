@@ -8,5 +8,36 @@
       flex-basis: 28%;
       margin: 1em;
       padding: 1em;
-      border: 1px solid goldenrod;
+      border: 1px solid  #FA921C;
   }
+
+  button {
+    text-align: center;
+  }
+
+  .bug__description {
+      font-size:large;
+      padding: 1em;
+  }
+
+  .bug__tags {
+    padding-top: 1em;
+  }
+
+  .bug__assignee {
+    padding-top: 1em;
+  }
+
+  .bug__status {
+    padding-top: 1em;
+  }
+
+  .bug__createddate {
+    padding-top: 1em;
+  }
+
+  .bugForm {
+      margin-left: 1em;
+  }
+
+

@@ -35,8 +35,8 @@ export const ProjectForm = () => {
                 setCurrentProject({
                     name: project.name,
                     description: project.description,
-                    assignees: project.assignees,
-                    bugs: project.bugs
+                    assignees: project.assignees.map(a => a.id),
+                    bugs: project.bugs.map(b => b.id)
                 })
             })
         }
@@ -72,6 +72,7 @@ export const ProjectForm = () => {
         setCurrentProject(newProjectBugs)
     }
 
+    console.log(currentProject)
 
 
     const changeProjectState = (event) => {
@@ -82,7 +83,8 @@ export const ProjectForm = () => {
 
     return (
         <form className="projectForm">
-            <h2 className="projectForm__name">Create New Project</h2>
+            {(projectId) ? 
+            <h2 className="projectForm__name">Edit Project</h2> : <h2 className="projectForm__name">Create New Project</h2>}
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name: </label>
@@ -109,7 +111,7 @@ export const ProjectForm = () => {
                             return (
                                 <>
                                     <input type="checkbox" id={e.id} required autoFocus value={e.user.username} onChange={handleAssigneeInputChange}
-                                        checked={currentProject.assignees.find(pa => pa.id === e.id)} />
+                                        checked={currentProject.assignees.find(pa => pa === e.id)} />
                                     <label htmlFor={e.id}>{e.user.username}</label>
                                 </>
                             )
@@ -125,7 +127,7 @@ export const ProjectForm = () => {
                             return (
                                 <>
                                     <input type="checkbox" id={b.id} required autoFocus value={b.title} onChange={handleBugInputChange}
-                                        checked={currentProject.bugs.find(pb => pb.id === b.id)} />
+                                        checked={currentProject.bugs.find(pb => pb === b.id)} />
                                     <label htmlFor={b.id}>{b.title}</label>
                                 </>
                             )
