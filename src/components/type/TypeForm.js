@@ -58,7 +58,7 @@ export const TypeForm = () => {
 
                             // Send PUT request to your API
                             updateType(type)
-                                .then(() => history.push("/types"))
+                                .then(() => history.push("/admin"))
                         }}
                         className="btn btn-primary">Edit Ticket Type</button>
                     :
@@ -73,7 +73,7 @@ export const TypeForm = () => {
 
                             // Send POST request to your API
                             createType(type)
-                                .then(() => history.push("/types"))
+                                .then(() => history.push("/admin"))
                         }}
                         className="btn btn-primary">Create Ticket Type</button>
             }

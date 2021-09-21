@@ -58,7 +58,7 @@ export const StatusForm = () => {
 
                             // Send PUT request to your API
                             updateStatus(status)
-                                .then(() => history.push("/statuses"))
+                                .then(() => history.push("/admin"))
                         }}
                         className="btn btn-primary">Edit Status</button>
                     :
@@ -73,7 +73,7 @@ export const StatusForm = () => {
 
                             // Send POST request to your API
                             createStatus(status)
-                                .then(() => history.push("/statuses"))
+                                .then(() => history.push("/admin"))
                         }}
                         className="btn btn-primary">Create Status</button>
             }

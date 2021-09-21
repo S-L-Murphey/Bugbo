@@ -13,7 +13,7 @@ export const TagList = () => {
     }, []);
 
     return (
-        <section className="tags">
+        <section className="Tags">
             {
                 tags.map(t => {
                     return (<section key={`tags--${t.id}`} className="tag">

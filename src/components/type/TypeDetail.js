@@ -22,7 +22,7 @@ export const TypeDetail = () => {
             <Link to ={`/types/${typeId}/edit`}><button>Edit Ticket Type</button></Link>
 
             <button onClick={() => deleteType(typeId).then(() => {
-                history.push("/types")})
+                history.push("/admin")})
             }>Delete Ticket Type</button>
         </section>
     
