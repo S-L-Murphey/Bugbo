@@ -4,7 +4,7 @@ import "./Auth.css"
 
 
 export const Login = props => {
-    const email = React.createRef();
+    const username = React.createRef();
     const password = React.createRef();
     const invalidDialog = React.createRef();
 
@@ -18,7 +18,7 @@ export const Login = props => {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                username: email.current.value,
+                username: username.current.value,
                 password: password.current.value
             })
         })
@@ -26,6 +26,7 @@ export const Login = props => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "bugbo_user_token", res.token )
+                    localStorage.setItem( "bugbo_user_username", username.current.value )
                     props.history.push("/bugs")
                 }
                 else {
@@ -45,8 +46,8 @@ export const Login = props => {
                     <h1>Bugbo</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Username </label>
-                        <input ref={email} type="text" id="email" className="form-control"  placeholder="Username" required autoFocus />
+                        <label htmlFor="inputUsername"> Username </label>
+                        <input ref={username} type="text" id="username" className="form-control"  placeholder="Username" required autoFocus />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputPassword"> Password </label>

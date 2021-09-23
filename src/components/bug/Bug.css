@@ -15,6 +15,10 @@
     text-align: center;
   }
 
+  .bug__title {
+    margin-left: 0;
+  }
+
   .bug__description {
       font-size:large;
       padding: 1em;
@@ -39,5 +43,18 @@
   .bugForm {
       margin-left: 1em;
   }
+
+  .allButton {
+    border: 0;
+    background-color: white;
+    text-decoration: underline;
+  }
+
+  .myButton {
+    border: 0;
+    background-color: white;
+    text-decoration: underline;
+  }
+
 
 

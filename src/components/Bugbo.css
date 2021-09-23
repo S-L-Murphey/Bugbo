@@ -1,6 +1,5 @@
 /* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat");
 /*Typography
 --------------------------------------------------------------*/
 body,
@@ -9,13 +8,13 @@ input,
 select,
 textarea {
   color: #404040;
-  font-family: "Comfortaa", Arial, sans-serif;
+  font-family:'Montserrat', sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Patua One", serif;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 2px;
 }
 

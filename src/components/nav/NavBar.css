@@ -19,11 +19,6 @@
     background-color: #333;
   }
 
-li {
-    float: left;
-    border-right: 1px solid #bbb;
-}
-
 .navbar__item{
   display: block;
   color: white;
@@ -44,18 +39,7 @@ li {
     color: white
 }
 
-
-
-.logout {
-    float: right;
-    color: white;
-    margin-right: 2em;
+li {
+  float: left;
+  border-right: 1px solid #bbb;
 }
-
-.logout__link:visited {
-    color: white;
-}
-
-.logout__link:active {
-    color: white
-  }

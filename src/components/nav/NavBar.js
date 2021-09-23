@@ -5,29 +5,29 @@ import "./NavBar.css"
 export const NavBar = (props) => {
     return (
 
-        
+
         <ul className="navbar">
             <li className="navbar__item">
                 <Link to="/bugs" className="link">Bugs</Link>
             </li>
             <li className="navbar__item">
-            <Link to="/projects" className="link">Projects</Link>
+                <Link to="/projects" className="link">Projects</Link>
             </li>
             <li className="navbar__item">
-            <Link to="/admin" className="link">Admin</Link>
+                <Link to="/admin" className="link">Admin</Link>
             </li>
-            
+
 
             {
                 (localStorage.getItem("bugbo_user_token") !== null) ?
-                   <li className="navbar__item">
-                       <Link to="/login">
-                        <p className="link"
-                            onClick={() => {
-                                localStorage.removeItem("bugbo_user_token")
-                                props.history.push({ pathname: "/" })
-                            }}
-                        >Logout</p>
+                    <li className="navbar__item">
+                        <Link to="/login">
+                            <p className="link"
+                                onClick={() => {
+                                    localStorage.removeItem("bugbo_user_token")
+                                    props.history.push({ pathname: "/" })
+                                }}
+                            >Logout</p>
                         </Link>
                     </li> :
                     <>
@@ -40,4 +40,5 @@ export const NavBar = (props) => {
                     </>
             }
 
-           </ul>)}
+        </ul>)
+}

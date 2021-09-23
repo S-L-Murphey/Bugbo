@@ -9,10 +9,9 @@ export const ProjectForm = () => {
     const history = useHistory();
     const { projectId } = useParams();
     const { createProject, updateProject, getProjectById } = useContext(ProjectContext);
-    const { employees, getAllEmployees, setEmployees } = useContext(EmployeeContext);
+    const { employees, getAllEmployees } = useContext(EmployeeContext);
     const { bugs, getAllBugs } = useContext(BugContext);
-    const [projectAssignees, setProjectAssignees] = useState([]);
-    const [projectBugs, setProjectBugs] = useState([]);
+    
 
     const [currentProject, setCurrentProject] = useState({
         name: "",

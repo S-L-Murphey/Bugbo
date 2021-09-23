@@ -9,7 +9,6 @@ export const ProjectProvider = (props) => {
 
     const getAllProjects = () => {
         return authFetch(`${apiURL}/projects`).then((res) => res.json())
-        .then(setProjects)
     };
 
     const getProjectById = (id) => {

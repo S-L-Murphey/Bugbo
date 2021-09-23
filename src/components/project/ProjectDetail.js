@@ -18,10 +18,10 @@ export const ProjectDetail = () => {
     <section className="project">
         <h3 className="project__name">{ project.name }</h3>
         <div className="project__description">{ project.description }</div>
-        <div className="project__assignees">Assignees:{ project.assignees?.map(a => {
+        <div className="project__assignees"><strong>Assignees:</strong>{ project.assignees?.map(a => {
             return <div>{a.user.username}, </div>
         })} </div>
-        <div className="project__bugs">Bugs: { project.bugs?.map(b => {
+        <div className="project__bugs"><strong>Bugs:</strong> { project.bugs?.map(b => {
             return <Link to ={`/bugs/${b.id}`}><div>{b.title}</div></Link>
         })}</div>
         <Link to ={`/projects/${projectId}/edit`}><button>Edit project</button></Link>

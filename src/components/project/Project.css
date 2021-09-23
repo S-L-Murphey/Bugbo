@@ -18,3 +18,28 @@
   .projectForm {
     margin-left: 1em;
   }
+
+  .project__title {
+    margin-left: 0;
+  }
+
+  .project__description {
+    font-size:large;
+    padding-bottom: 1em;
+  }
+
+  .project__bugs {
+    padding-top: 1em;
+  }
+
+  .allButton {
+    border: 0;
+    background-color: white;
+    text-decoration: underline;
+  }
+
+  .myButton {
+    border: 0;
+    background-color: white;
+    text-decoration: underline;
+  }
