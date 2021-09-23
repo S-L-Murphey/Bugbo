@@ -6,7 +6,6 @@ import "./Project.css"
 export const ProjectList = () => {
 
     const { projects, getAllProjects, setProjects } = useContext(ProjectContext);
-    const { history } = useHistory();
     const loggedInUsername = localStorage.getItem("bugbo_user_username");
 
     useEffect(() => {

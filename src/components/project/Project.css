@@ -32,6 +32,10 @@
     padding-top: 1em;
   }
 
+  .project__bugs__div {
+    padding-top: 1em;
+  }
+
   .allButton {
     border: 0;
     background-color: white;
