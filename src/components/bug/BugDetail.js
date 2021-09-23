@@ -22,11 +22,11 @@ export const BugDetail = () => {
     <section className="bug">
         <h3 className="bug__title">{ bug.title }</h3>
         <div className="bug__description">{ bug.description }</div>
-        <div className="bug__createddate">Created Date: { bug.entry_date }</div>
-        <div className="bug__status">Status: { bug.status?.name }</div>
-        <div className="bug__creator">Creator: { bug.creator?.user.username }</div>
-        <div className="bug__creator">Assignee: { bug.owner?.user.username }</div>
-        <div className="bug__tags">Tags: { bug.tags?.map(t => {
+        <div className="bug__creator"><strong>Creator:</strong> { bug.creator?.user.username }</div>
+        <div className="bug__createddate"><strong>Created Date:</strong> { bug.entry_date }</div>
+        <div className="bug__status"><strong>Status:</strong> { bug.status?.name }</div>
+        <div className="bug__assignee"><strong>Assignee:</strong> { bug.owner?.user.username }</div>
+        <div className="bug__tags"><strong>Tags:</strong> { bug.tags?.map(t => {
             return <div>{t.name}</div>
         })}</div>
         <Link to ={`/bugs/${bugId}/edit`}><button>Edit Bug</button></Link>

@@ -13,22 +13,28 @@ export const TagList = () => {
     }, []);
 
     return (
-        <section className="Tags">
-            {
-                tags.map(t => {
-                    return (<section key={`tags--${t.id}`} className="tag">
-                        <Link to={`/tags/${t.id}`}>
-                            <div className="tag__list">
-                                <div className="tag__name">
-                                    {t.name}
-                                </div>
-                            </div>
-                        </Link>
-                    </section>
-                    )
-                })
-            }
-            <Link to ={`/tags/new`}><button>Create New Tag</button></Link>
-        </section>
+        <article>
+            <h2>Current Ticket Tags</h2>
+            <section className="main_container">
+                <section className="tags">
+                    {
+                        tags.map(t => {
+                            return (<section key={`tags--${t.id}`} className="tag">
+                                <Link to={`/tags/${t.id}`}>
+                                    <div className="tag__list">
+                                        <div className="tag__name">
+                                            {t.name}
+                                        </div>
+                                    </div>
+                                </Link>
+                            </section>
+                            )
+                        })
+                    }
+                    
+                </section>
+                <Link to={`/tags/new`}><button>Create New Tag</button></Link>
+            </section>
+        </article>
     )
 }

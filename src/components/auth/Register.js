@@ -3,7 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import { register } from "../../utils/auth";
 import "./Auth.css";
 
+
 export const Register = (props) => {
+  
   const firstName = React.createRef();
   const lastName = React.createRef();
   const email = React.createRef();
@@ -12,18 +14,39 @@ export const Register = (props) => {
   const verifyPassword = React.createRef();
   const passwordDialog = React.createRef();
   const avatar = React.createRef();
+  const user_type = React.createRef();
+  const username = React.createRef();
 
-
+  const userTypes = [{
+        id: 1,
+        name: "Administrator",
+        description: "Admins have global permissions with CRUD on all features."
+    },
+    {
+        id: 2,
+        name: "Developer",
+        description: "Devs are able to create and update tickets. They can update projects. They have less permissions than admins but more than testers."
+    },
+    {
+        id: 3,
+        name: "Tester",
+        description: "Testers can only create tickets and create, edit, and delete comments."
+    }
+]
+  
   const handleRegister = (e) => {
     e.preventDefault();
 
     if (password.current.value === verifyPassword.current.value) {
       const newUser = {
-        username: email.current.value,
-        first_name: firstName.current.value,
-        last_name: lastName.current.value,
-        email: email.current.value,
-        password: password.current.value,
+        "username": username.current.value,
+        "first_name": firstName.current.value,
+        "last_name": lastName.current.value,
+        "bio": bio.current.value,
+        "email": email.current.value,
+        "password": password.current.value,
+        "avatar": avatar.current.value,
+        "user_type": parseInt(user_type.current.value)
       };
 
       return register(newUser).then((success) => {
@@ -76,6 +99,18 @@ export const Register = (props) => {
             required
           />
         </fieldset>
+
+        <fieldset>
+          <label htmlFor="username"> Username </label>
+          <input
+            ref={username}
+            type="username"
+            name="username"
+            className="form-control"
+            placeholder="Select a user name..."
+            required
+          />
+        </fieldset>
         <fieldset>
           <label htmlFor="inputPassword"> Password </label>
           <input
@@ -109,6 +144,33 @@ export const Register = (props) => {
             required
           />
         </fieldset>
+
+        <fieldset>
+          <label htmlFor="bio"> Add Bio </label>
+          <input
+            ref={bio}
+            type="bio"
+            name="bio"
+            className="form-control"
+            placeholder="Let others know a little bit about you..."
+            required
+          />
+        </fieldset>
+
+
+
+        <fieldset>
+          <label htmlFor="user_type"> User Type </label>
+          <select type="select" name="user_type" ref={user_type} required autoFocus className="form-control">
+                        <option value="0">Select User Type</option>
+                        {userTypes.map((element => {
+                            return <option value={element.id}>
+                                {element.name}
+                            </option>
+                        }))}
+                    </select>
+        </fieldset>
+
         <fieldset
           style={{
             textAlign: "center",

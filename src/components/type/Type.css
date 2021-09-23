@@ -10,3 +10,14 @@
       padding: 1em;
       border: 1px solid goldenrod;
   }
+
+  .main_container {
+    flex-basis: 28%;
+      margin: 1em;
+      padding: 1em;
+      border: 1px solid orange;
+}
+
+h2 {
+  margin-left: 1em;
+}

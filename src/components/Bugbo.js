@@ -8,6 +8,7 @@ import { NavBar } from "./nav/NavBar"
 
 export const Bugbo = () => (
     <>
+    <h1 className="title">BUGBO</h1>
         <Route render={() => {
             if (localStorage.getItem("bugbo_user_token")) {
                 return <>

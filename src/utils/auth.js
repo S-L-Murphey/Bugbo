@@ -47,7 +47,7 @@ export const register = (user) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
+      "Accept": "application/json",
     },
     body: JSON.stringify(user),
   })
