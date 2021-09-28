@@ -5,9 +5,10 @@ import { authFetch } from "../../utils/auth";
 export const BugContext = createContext();
 
 export const BugProvider = (props) => {
-    const [searchTerms, setSearchTerms] = useState([]);
+    const [searchTerms, setSearchTerms] = useState("");
     const [bugs, setBugs] = useState([]);
     const [bugTypes, setTypes] = useState([]);
+    
 
     const getAllBugs = () => {
         return authFetch(`${apiURL}/bugs`).then((res) => res.json())
@@ -59,12 +60,23 @@ export const BugProvider = (props) => {
           .then(setTypes)
   };
 
+  const getBugsBySearch = (searchWord) => {
+      return fetch(`http://localhost:8000/bugs?q=${searchWord}`, {
+        headers:{
+        "Authorization": `Token ${localStorage.getItem("bugbo_user_token")}`,
+        "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then((response) => setBugs(response.Search))
+}
+
     return (
         <BugContext.Provider
           value={{
             getAllBugs, getBugById, getBugsByCreator, createBug, updateBug,
             deleteBug, bugs, setBugs, searchTerms, setSearchTerms, bugTypes, getBugTypes,
-            setTypes
+            setTypes, getBugsBySearch
           }}
         >
           {props.children}

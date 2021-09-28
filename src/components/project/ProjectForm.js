@@ -127,7 +127,7 @@ export const ProjectForm = () => {
                                 <>
                                     <input type="checkbox" id={b.id} required autoFocus value={b.title} onChange={handleBugInputChange}
                                         checked={currentProject.bugs.find(pb => pb === b.id)} />
-                                    <label htmlFor={b.id}>{b.title}</label>
+                                    <label htmlFor={b.id} className="ticketList">{b.title}</label>
                                 </>
                             )
                         } 
