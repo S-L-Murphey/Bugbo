@@ -23,6 +23,8 @@ import { ProjectDetail } from "./project/ProjectDetail";
 import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { ProjectForm } from "./project/ProjectForm.js";
 import { ProfileProvider } from "./auth/AuthProvider";
+import { BugSearch } from "./bug/BugSearch";
+
 
 export const ApplicationViews = () => {
     return (
@@ -35,7 +37,9 @@ export const ApplicationViews = () => {
                                 <TypeProvider>
                                     <ProfileProvider>
                                         <Route exact path="/bugs">
+                                            <BugSearch />
                                             <BugList />
+                                            
                                         </Route>
 
                                         <Route exact path="/bugs/:bugId(\d+)">
